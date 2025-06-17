@@ -1,0 +1,19 @@
+# version: '3.8'
+
+services:
+  nginx :
+    build : requirements/nginx/.
+    container_name : nginx
+    ports : 
+      - "4444:4444"
+    volumes:
+      - ./web:/var/www/html
+
+  wordpress:
+    build : requirements/wordpress/.
+    container_name: wordpress
+    volumes:
+      - ./web:/var/www/html
+  mariadb :
+    container_name: mariadb
+    build: requirements/mariadb/.
