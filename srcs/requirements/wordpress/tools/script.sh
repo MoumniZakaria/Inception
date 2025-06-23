@@ -15,4 +15,5 @@ mv wp-cli.phar /usr/wp
 /usr/wp core install --url=localhost:4444 --title=inception --admin_user=zmoumni --admin_password=password --admin_email=zmoumni@admin.com --allow-root
  
 
+
 php-fpm7.4 -F
