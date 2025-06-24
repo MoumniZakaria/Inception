@@ -1,6 +1,10 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get upgrade -y && apt-get install nginx -y
+RUN apt-get update && apt-get upgrade -y && apt-get install nginx -y && apt install openssl
+
+RUN mkdir -p /etc/nginx/ssl
+
+RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/CN=example.com"
 
 
 COPY  ./conf/nginx.conf /etc/nginx/sites-available/default

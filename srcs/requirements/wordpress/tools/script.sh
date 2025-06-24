@@ -12,7 +12,7 @@ mv wp-cli.phar /usr/wp
 
 /usr/wp core download --allow-root
 /usr/wp config create --dbname=wordpress --dbuser=zmoumni --dbpass=password --dbhost=mariadb --allow-root
-/usr/wp core install --url=localhost:4444 --title=inception --admin_user=zmoumni --admin_password=password --admin_email=zmoumni@admin.com --allow-root
+/usr/wp core install --url=localhost --title=inception --admin_user=zmoumni --admin_password=password --admin_email=zmoumni@admin.com --allow-root
  
 
 
