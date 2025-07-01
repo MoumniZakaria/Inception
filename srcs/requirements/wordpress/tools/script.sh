@@ -10,10 +10,13 @@ mv wp-cli.phar /usr/wp
 
 # cp wp-config-sample.php wp-config.php
 
+
 /usr/wp core download --allow-root
 /usr/wp config create --dbname=wordpress --dbuser=zmoumni --dbpass=password --dbhost=mariadb --allow-root
 /usr/wp core install --url=localhost --title=inception --admin_user=zmoumni --admin_password=password --admin_email=zmoumni@admin.com --allow-root
  
+
+/usr/wp user create zakaria zakaria@example.com --role=author --user_pass=1234 --allow-root
 
 
 php-fpm7.4 -F

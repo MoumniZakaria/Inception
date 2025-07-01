@@ -34,12 +34,12 @@
 	},
 	"records": [
 		{
-			"x": 0,
-			"y": 0,
-			"lastActivityTimestamp": 0,
-			"meta": {},
 			"id": "pointer:pointer",
-			"typeName": "pointer"
+			"typeName": "pointer",
+			"x": -65.45719129393959,
+			"y": -592.7294139636435,
+			"lastActivityTimestamp": 1750851927337,
+			"meta": {}
 		},
 		{
 			"id": "asset:397304242",
@@ -81,9 +81,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 235.32832123888065,
-			"y": 558.3044085711655,
-			"z": 0.8030961105675621,
+			"x": 288.8249854583105,
+			"y": 1099.122248414464,
+			"z": 0.4805228805612006,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -104,9 +104,11 @@
 			"meta": {}
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:fpA-o9v7JDUWLB6pdvBsg",
 			"croppingShapeId": null,
-			"selectedShapeIds": [],
+			"selectedShapeIds": [
+				"shape:fpA-o9v7JDUWLB6pdvBsg"
+			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -536,7 +538,7 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 2272,
+				"w": 992,
 				"h": 1294
 			},
 			"insets": [
@@ -554,7 +556,7 @@
 			"isFocused": true,
 			"devicePixelRatio": 1.5,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": null,
+			"isHoveringCanvas": true,
 			"openMenus": [],
 			"isChangingStyle": false,
 			"isReadonly": false,
@@ -563,6 +565,57 @@
 			"id": "instance:instance",
 			"currentPageId": "page:page",
 			"typeName": "instance"
+		},
+		{
+			"x": -52.97079315824078,
+			"y": -819.8087438078244,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:fpA-o9v7JDUWLB6pdvBsg",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1120.34375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Docker is "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "highlight"
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "a software platform that uses \"containers\" to package and run applications"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "a4An9",
+			"typeName": "shape"
 		}
 	]
 }
