@@ -1,11 +1,16 @@
 FROM debian:oldstable
 
-RUN apt-get update && apt-get upgrade -y && apt-get install mariadb-server -y && apt-get install mariadb-client -y
+RUN apt-get update && \
+    apt-get install mariadb-server mariadb-client -y
 
 COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 RUN mkdir -p /run/mysqld
 
-COPY ./scripts/init.sql /etc/mysql/init.sql 
+# COPY ./scripts/init.sql /etc/mysql/init.sql 
 
-CMD [ "mysqld"]
+COPY ./scripts/setup.sh  ./setup.sh
+
+RUN chmod +x ./setup.sh
+
+# CMD [ "mysqld"]
