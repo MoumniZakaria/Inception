@@ -13,13 +13,16 @@ RUN apt-get update \
 # (This line is duplicated and unnecessary – installs php-fpm again)
 
 
-
-# RUN mkdir -p /var/www/html
 RUN mkdir -p /run/php
 
+RUN mkdir -p /var/www/html
+RUN chmod -R 755 /var/www/html
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/wp
 
-COPY  ./conf/wordpress.conf /etc/php/7.4/fpm/pool.d/www.conf
+RUN sed -i 's/^listen = .*/listen = 9000/' /etc/php/7.4/fpm/pool.d/www.conf
 
 COPY ./tools/script.sh /usr/script.sh
 

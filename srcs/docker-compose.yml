@@ -3,25 +3,58 @@
 services:
   nginx :
     build : requirements/nginx/.
+    depends_on :
+      - wordpress
     container_name : nginx
+    image : nginx
     ports : 
       - "443:443"
     volumes:
-      - ./web:/var/www/html
+      - wordpress_data:/var/www/html
     env_file : 
       .env
-
+    networks:
+      - inception
+    restart: always
 
   wordpress:
     build : requirements/wordpress/.
+    depends_on :
+      - mariadb
     container_name: wordpress
+    image : wordpress
     volumes:
-      - ./web:/var/www/html
+      - wordpress_data:/var/www/html
     env_file : 
       .env
-    
+    networks:
+      - inception
+    restart: always
+
   mariadb :
-    container_name: mariadb
     build: requirements/mariadb/.
+    container_name: mariadb
+    image : mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
     env_file : 
       .env
+    networks:
+      - inception
+    restart: always
+
+volumes:
+  wordpress_data:
+    driver:
+      o: bind
+      type: none
+      device: /home/zmoumni/data/wordpress
+  mariadb_data:
+    driver:
+      o: bind
+      type: none
+      device: /home/zmoumni/data/mariadb
+
+networks:
+  inception:
+    driver: bridge
