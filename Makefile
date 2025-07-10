@@ -3,10 +3,10 @@
 # Default target
 all:
 	@echo "\033[0;34m📁 Creating data directories...\033[0m"
-	mkdir -p /data/zmoumni/mariadb
-	mkdir -p /data/zmoumni/wordpress
+	mkdir -p /home/zmoumni/data/mariadb
+	mkdir -p /home/zmoumni/data/wordpress
 	@echo "\033[0;32m🚀 Building and starting Inception containers...\033[0m"
-	cd srcs && docker compose up --build -d
+	cd srcs && docker compose up --build
 
 # Stop and remove all containers, volumes, and images
 down:
@@ -21,7 +21,7 @@ clean: down
 # Full clean including data directories
 fclean: clean
 	@echo "\033[0;31m🗑️  Removing data directories...\033[0m"
-	sudo rm -rf /data/zmoumni
+	sudo rm -rf /home/zmoumni/data/
 
 # Rebuild: full clean and then launch again
 re: fclean all

@@ -1,6 +1,30 @@
-# version: '3.8'
 
 services:
+  mariadb:
+    container_name: mariadb
+    build: requirements/mariadb/.
+    image : mariadb
+    env_file: .env
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - inception
+    restart: always
+  
+  wordpress:
+    build : requirements/wordpress/.
+    depends_on :
+      - mariadb
+    container_name: wordpress
+    image : wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+    env_file : 
+      .env
+    networks:
+      - inception
+    restart: always
+
   nginx :
     build : requirements/nginx/.
     depends_on :
@@ -17,40 +41,16 @@ services:
       - inception
     restart: always
 
-  wordpress:
-    build : requirements/wordpress/.
-    depends_on :
-      - mariadb
-    container_name: wordpress
-    image : wordpress
-    volumes:
-      - wordpress_data:/var/www/html
-    env_file : 
-      .env
-    networks:
-      - inception
-    restart: always
-
-  mariadb :
-    build: requirements/mariadb/.
-    container_name: mariadb
-    image : mariadb
-    volumes:
-      - mariadb_data:/var/lib/mysql
-    env_file : 
-      .env
-    networks:
-      - inception
-    restart: always
-
 volumes:
   wordpress_data:
-    driver:
+    driver: local
+    driver_opts:
       o: bind
       type: none
       device: /home/zmoumni/data/wordpress
   mariadb_data:
-    driver:
+    driver: local
+    driver_opts:
       o: bind
       type: none
       device: /home/zmoumni/data/mariadb
