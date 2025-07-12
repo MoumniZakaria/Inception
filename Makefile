@@ -31,22 +31,5 @@ status:
 	@echo "\033[0;36mℹ️  Container status:\033[0m"
 	cd srcs && docker compose ps
 
-# Show logs
-logs:
-	@echo "\033[0;36m📋 Container logs:\033[0m"
-	cd srcs && docker compose logs -f
-
-# Help target
-help:
-	@echo "\033[0;33m📖 Available targets:\033[0m"
-	@echo "  all    - Create directories and start containers"
-	@echo "  down   - Stop containers"
-	@echo "  clean  - Stop containers and remove volumes/images"
-	@echo "  fclean - Full clean including data directories"
-	@echo "  re     - Rebuild everything (fclean + all)"
-	@echo "  status - Show container status"
-	@echo "  logs   - Show container logs"
-	@echo "  help   - Show this help"
-
 # Declare phony targets
 .PHONY: all down clean fclean re status logs help

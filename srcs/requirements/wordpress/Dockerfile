@@ -1,25 +1,14 @@
-# Use the official Debian base image, specifically the "oldstable" version (Debian 11 "Bullseye")
 FROM debian:oldstable
 
 WORKDIR /var/www/html
 
-# RUN executes commands inside the container during the image build stage
 RUN apt-get update \                 
-# Update the list of available packages from Debian repositories
  && apt-get upgrade -y \             
-# Upgrade all installed packages to the latest versions (-y means yes to all prompts)
  && apt-get install -y php-fpm php-mysqli curl
-# Install PHP-FPM (FastCGI Process Manager) - version 7.4 on Debian 11 by default 
-# (This line is duplicated and unnecessary – installs php-fpm again)
 
-
-
-RUN mkdir -p /var/www/html
 RUN mkdir -p /run/php
 
-
-
-COPY  ./conf/wordpress.conf /etc/php/7.4/fpm/pool.d/www.conf
+RUN sed -i 's|^listen = .*|listen = 9000|' /etc/php/7.4/fpm/pool.d/www.conf
 
 COPY ./tools/script.sh /usr/script.sh
 
